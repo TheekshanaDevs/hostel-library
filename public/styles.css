@@ -1,0 +1,365 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* New: nicer page background and container */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #2b2b2b;
+    background: linear-gradient(180deg, #f6f8fb 0%, #eef3f9 100%);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 24px 12px;
+}
+
+/* Central container with soft edges */
+main {
+    max-width: 1100px;
+    margin: 1.6rem auto;
+    padding: 1rem;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg,#283c86 0%, #45a247 100%);
+    color: white;
+    padding: 18px 20px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(34,60,80,0.12);
+    margin-bottom: 16px;
+    position: relative; /* ensure hamburger can be positioned inside header */
+}
+
+/* Navigation */
+nav {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Hamburger/menu toggle (desktop hidden, mobile visible) */
+.menu-toggle {
+    display: none;
+    position: absolute;
+    right: 16px;
+    top: 18px;
+    background: rgba(255,255,255,0.08);
+    color: white;
+    border: 0;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 18px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 6px 18px rgba(34,60,80,0.08);
+}
+
+/* Ensure nav on desktop keeps original layout */
+nav.nav-menu {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Mobile nav toggle (hidden on desktop) */
+.mobile-nav-toggle {
+    display: none;
+    background: rgba(255,255,255,0.08);
+    color: white;
+    border: 0;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(34,60,80,0.12);
+}
+
+/* Nav buttons style (improved) */
+nav button {
+    padding: 0.6rem 1.1rem;
+    background: linear-gradient(180deg,#ffffff 0%, #f1f6fb 100%);
+    color: #2c3e50;
+    border: 1px solid rgba(44,62,80,0.08);
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 220ms ease;
+    box-shadow: 0 6px 18px rgba(47,63,88,0.06);
+}
+
+nav button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(34,60,80,0.12);
+}
+
+/* Sections (cards) */
+section {
+    display: none;
+    background: linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);
+    padding: 1.6rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(34,60,80,0.05);
+    margin-bottom: 1.4rem;
+    border: 1px solid rgba(34,60,80,0.03);
+}
+
+section.active {
+    display: block;
+}
+
+/* Typography */
+h2 {
+    margin-bottom: 0.8rem;
+    color: #253244;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+}
+
+h3 {
+    margin: 0.7rem 0;
+    color: #263039;
+    font-weight: 800;
+}
+
+/* Controls */
+.search-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.action-card {
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(180deg,#fbfbff 0%, #f8fbff 100%);
+    border: 1px solid rgba(43,56,70,0.04);
+}
+
+/* Bold inputs / selects and improved focus */
+input, select, textarea {
+    padding: 0.6rem 0.85rem;
+    border: 1px solid #e1e8ef;
+    border-radius: 8px;
+    min-width: 150px;
+    font-weight: 700; /* bold as requested */
+    color: #102027;
+    background: #fff;
+    transition: box-shadow 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 8px 24px rgba(59,130,246,0.12);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+/* Buttons: stronger visuals + variants */
+button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 800;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+button:hover {
+    transform: translateY(-4px);
+}
+
+/* Action variants */
+.add-btn {
+    background: linear-gradient(90deg,#38b000 0%, #2ea043 100%);
+    color: white;
+    box-shadow: 0 10px 30px rgba(56,176,0,0.12);
+}
+
+.delete-btn {
+    background: linear-gradient(90deg,#ff5f5f 0%, #e64545 100%);
+    color: white;
+    box-shadow: 0 10px 26px rgba(230,69,69,0.12);
+}
+
+.search-btn {
+    background: linear-gradient(90deg,#4f46e5 0%, #2563eb 100%);
+    color: white;
+    box-shadow: 0 10px 26px rgba(37,99,235,0.12);
+}
+
+/* Book cards */
+.book-card {
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);
+    position: relative;
+    border: 1px solid rgba(37,50,60,0.04);
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 50px rgba(36,54,70,0.06);
+}
+
+/* Status badges */
+.status-available {
+    color: #116530;
+    font-weight: 900;
+    background: rgba(34,197,94,0.08);
+    padding: 4px 8px;
+    border-radius: 999px;
+    display: inline-block;
+}
+
+.status-borrowed {
+    color: #991b1b;
+    font-weight: 900;
+    background: rgba(239,68,68,0.06);
+    padding: 4px 8px;
+    border-radius: 999px;
+}
+
+/* Borrower info */
+.borrower-info {
+    margin-top: 0.6rem;
+    padding: 0.7rem;
+    border-radius: 8px;
+    background-color: #fff8e6;
+    border: 1px dashed rgba(0,0,0,0.03);
+}
+
+/* Delete button style override (positioned on desktop) */
+.delete-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 0.9rem;
+    padding: 6px 8px;
+    display: none;
+}
+
+/* Show delete only in admin-mode */
+.admin-mode .delete-btn {
+    display: inline-block;
+}
+
+/* Alerts - larger, nicer icon space */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 13px 20px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 800;
+    box-shadow: 0 14px 40px rgba(34,60,80,0.12);
+    animation: slideIn 0.45s cubic-bezier(.2,.9,.2,1) forwards;
+    z-index: 2000;
+    min-width: 220px;
+}
+
+/* New friendly alert colors + subtle grad */
+.alert-success {
+    background: linear-gradient(90deg,#2ecc71 0%, #27ae60 100%);
+    border-left: 6px solid rgba(0,0,0,0.08);
+}
+
+.alert-error {
+    background: linear-gradient(90deg,#ff6b6b 0%, #e74c3c 100%);
+    border-left: 6px solid rgba(0,0,0,0.08);
+}
+
+.alert-info {
+    background: linear-gradient(90deg,#4f46e5 0%, #3b82f6 100%);
+    border-left: 6px solid rgba(0,0,0,0.08);
+}
+
+@keyframes slideIn {
+    from { transform: translateX(20px); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+@keyframes fadeOut {
+    from { transform: translateX(0); opacity: 1; }
+    to   { transform: translateX(20px); opacity: 0; }
+}
+
+/* Responsive improvements */
+@media (max-width: 900px) {
+    main { padding: 0 12px; }
+    .book-card { padding: 0.9rem; }
+}
+
+/* Mobile: compress nav into a single toggle */
+@media (max-width: 768px) {
+    .mobile-nav-toggle { display: inline-block; }
+    /* hide nav real buttons by default; show when nav has class 'nav-open' */
+    nav button { display: none; }
+    nav.nav-open button { 
+        display: inline-block; 
+        width: 100%;
+        text-align: left;
+        padding-left: 16px;
+        border-radius: 8px;
+        background: #fff;
+        margin-top: 8px;
+    }
+    nav { flex-direction: column; align-items: stretch; gap: 6px; }
+
+    .menu-toggle { display: inline-block; }
+
+    /* collapse nav into column and hide individual buttons until nav-open */
+    nav.nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        padding: 8px 12px 14px 12px;
+    }
+
+    /* hide buttons until user opens menu */
+    nav.nav-menu button {
+        display: none;
+        width: 100%;
+        text-align: left;
+        padding: 12px 14px;
+        border-radius: 8px;
+        background: #fff;
+        color: #263039;
+        font-weight: 800;
+        box-shadow: 0 6px 18px rgba(47,63,88,0.04);
+    }
+
+    /* when open, show buttons stacked */
+    nav.nav-menu.nav-open button {
+        display: block;
+    }
+
+    /* small visual tweak when nav open */
+    nav.nav-menu.nav-open {
+        background: linear-gradient(180deg,#ffffffcc, #f7fbffcc);
+        border-radius: 10px;
+    }
+
+    .delete-btn { position: relative; top: 0; right: 0; display: block; margin-top: 8px; }
+}
+
+/* small improvements for very small devices */
+@media (max-width: 420px) {
+    h2 { font-size: 1.1rem; }
+    nav.nav-open button { padding: 12px 14px; }
+}

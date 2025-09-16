@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hostel Library</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+    <h1>Hostel Library</h1>
+    <!-- Hamburger menu button -->
+    <button id="menuToggle" class="menu-toggle">☰</button>
+
+    <nav id="navMenu" class="nav-menu">
+      <button id="showSearch">Search Books</button>
+      <button id="showAddBook">Add New Book</button>
+      <button id="showBorrowReturn">Borrow/Return</button>
+      <button id="showBorrowedBooks">Borrowed Books</button>
+      <button id="adminLogin">Admin Login</button>
+    </nav>
+  </header>
+
+
+  <main>
+    <section id="searchSection" class="active">
+      <h2>Search Books</h2>
+      <div class="search-controls">
+        <input id="searchInput" type="text" placeholder="Search by title or author" />
+        <input id="bookIdFilter" type="text" placeholder="Book ID" />
+        <select id="categoryFilter"><option value="">All Categories</option></select>
+        <select id="statusFilter">
+          <option value="">All Status</option>
+          <option value="Available">Available</option>
+          <option value="Borrowed">Borrowed</option>
+        </select>
+        <button onclick="searchBooks()" class="search-btn">Search</button>
+      </div>
+      <div id="searchResults"></div>
+    </section>
+
+    <section id="addBookSection">
+      <h2>Add New Book</h2>
+      <form id="addBookForm">
+        <input id="book_id" type="text" placeholder="Book ID" required />
+        <input id="title" type="text" placeholder="Title" required />
+        <input id="author" type="text" placeholder="Author" />
+        <input id="category" type="text" placeholder="Category" />
+        <button type="submit" class="add-btn">Add Book</button>
+      </form>
+    </section>
+
+    <section id="borrowReturnSection">
+      <h2>Borrow or Return a Book</h2>
+      <div class="action-card">
+        <h3>Borrow a Book</h3>
+        <input id="borrowBookId" type="text" placeholder="Book ID" />
+        <input id="borrowerName" type="text" placeholder="Your Name" />
+        <button id="borrowBtn" class="add-btn">Borrow</button>
+
+      </div>
+      <div class="action-card">
+        <h3>Return a Book</h3>
+        <input id="returnBookId" type="text" placeholder="Book ID" />
+        <button id="returnBtn" class="search-btn">Return</button>
+      </div>
+    </section>
+
+    <section id="borrowedBooksSection">
+      <h2>Currently Borrowed Books</h2>
+      <div id="borrowedBooksList"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
